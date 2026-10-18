@@ -1,0 +1,45 @@
+# Render blueprint for the backend API.
+# Deploy with: New > Blueprint in the Render dashboard, pointed at this repo.
+# Render prompts for every var marked `sync: false` instead of storing it here,
+# so no secret ever lands in git.
+services:
+  - type: web
+    name: bulk-mail-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Render injects PORT; server.js already reads it.
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      # Read by `npm run seed:admin` only, never at request time.
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_SECURE
+        value: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM_NAME
+        value: Bulk Mailer
+      - key: SMTP_FROM_EMAIL
+        sync: false
+      # Origin only (no path, no trailing slash) — this is what CORS compares against.
+      - key: CLIENT_ORIGIN
+        value: https://23cb005-cmd.github.io
