@@ -434,3 +434,14 @@ textarea {
 .demo-creds .btn-fill:hover {
   background: var(--color-surface);
 }
+
+/* Demo-mode notice, shown on every page when there is no real backend */
+.demo-banner {
+  background: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-align: center;
+}

@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import DemoBanner from "./components/DemoBanner";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import SendMail from "./pages/SendMail";
@@ -9,6 +10,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <Navbar />
+      <DemoBanner />
       <main className="app-content">
         <Routes>
           <Route path="/login" element={<Login />} />

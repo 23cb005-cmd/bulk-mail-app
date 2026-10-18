@@ -1,4 +1,5 @@
 import axios from "axios";
+import { demoAdapter, isDemoMode } from "./demoBackend";
 
 // BASE_URL is "/" locally and "/<repo>/" when served from a GitHub Pages
 // subpath, so build the login URL from it instead of hardcoding "/login".
@@ -6,6 +7,9 @@ const loginPath = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/login`;
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  // Swapping the adapter keeps interceptors and call sites untouched, so the
+  // demo exercises the same code paths as a real deployment.
+  ...(isDemoMode ? { adapter: demoAdapter } : {}),
 });
 
 apiClient.interceptors.request.use((config) => {
