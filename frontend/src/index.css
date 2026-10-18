@@ -376,3 +376,61 @@ textarea {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+/* Demo credentials shown on the login page of the public demo */
+.demo-creds {
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  padding: 0.75rem 0.85rem;
+}
+
+.demo-creds-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.demo-creds-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.demo-creds-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.75rem;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.demo-creds-list dt {
+  color: var(--color-muted);
+}
+
+.demo-creds-list dd {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Credentials can be long; wrap rather than overflow the card. */
+  overflow-wrap: anywhere;
+}
+
+.demo-creds .btn-fill {
+  flex-shrink: 0;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.demo-creds .btn-fill:hover {
+  background: var(--color-surface);
+}
